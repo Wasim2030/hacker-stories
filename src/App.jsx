@@ -21,32 +21,39 @@ function App() {
   return (
     <div>
       <h1>Hello World</h1>
-
-      {/* {list.map((l) => {
-        return <h1>{l.author}</h1>;
-      })} */}
-
-      <label htmlFor="search">Search: </label>
-      <input type="text" id="search" />
-
+      <SearchComponent />
       <hr />
-
-      <ul>
-        {list.map((item) => {
-          return (
-            <li key={item.objectID}>
-              <span>
-                <a href={item.url}>{item.title}</a>
-                <p>{item.author}</p>
-                <p>{item.num_comments}</p>
-                <p>{item.points}</p>
-              </span>
-            </li>
-          );
-        })}
-      </ul>
+      <List />
     </div>
   );
 }
 
 export default App;
+
+function List() {
+  return (
+    <ul>
+      {list.map((item) => {
+        return (
+          <li key={item.objectID}>
+            <span>
+              <a href={item.url}>{item.title}</a>
+              <p>{item.author}</p>
+              <p>{item.num_comments}</p>
+              <p>{item.points}</p>
+            </span>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+function SearchComponent() {
+  return (
+    <>
+      <label htmlFor="search">Search: </label>
+      <input type="text" id="search" />
+    </>
+  );
+}
