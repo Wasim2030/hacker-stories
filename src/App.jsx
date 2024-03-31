@@ -43,9 +43,18 @@ const List = () => (
   </ul>
 );
 
-const SearchComponent = () => (
-  <>
-    <label htmlFor="search">Search: </label>
-    <input type="text" id="search" />
-  </>
-);
+const SearchComponent = () => {
+  const handleChange = (event) => {
+    // synthetic event
+    console.log(event);
+    // value of target (here: input html element)
+    console.log(event.target.value);
+  };
+
+  return (
+    <>
+      <label htmlFor="search">Search: </label>
+      <input type="text" id="search" onChange={handleChange} />
+    </>
+  );
+};
