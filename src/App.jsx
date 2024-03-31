@@ -17,43 +17,35 @@ const list = [
   },
 ];
 
-function App() {
-  return (
-    <div>
-      <h1>Hello World</h1>
-      <SearchComponent />
-      <hr />
-      <List />
-    </div>
-  );
-}
+const App = () => (
+  <div>
+    <h1>Hello World</h1>
+    <SearchComponent />
+    <hr />
+    <List />
+  </div>
+);
 
 export default App;
 
-function List() {
-  return (
-    <ul>
-      {list.map((item) => {
-        return (
-          <li key={item.objectID}>
-            <span>
-              <a href={item.url}>{item.title}</a>
-              <p>{item.author}</p>
-              <p>{item.num_comments}</p>
-              <p>{item.points}</p>
-            </span>
-          </li>
-        );
-      })}
-    </ul>
-  );
-}
+const List = () => (
+  <ul>
+    {list.map((item) => (
+      <li key={item.objectID}>
+        <span>
+          <a href={item.url}>{item.title}</a>
+          <p>{item.author}</p>
+          <p>{item.num_comments}</p>
+          <p>{item.points}</p>
+        </span>
+      </li>
+    ))}
+  </ul>
+);
 
-function SearchComponent() {
-  return (
-    <>
-      <label htmlFor="search">Search: </label>
-      <input type="text" id="search" />
-    </>
-  );
-}
+const SearchComponent = () => (
+  <>
+    <label htmlFor="search">Search: </label>
+    <input type="text" id="search" />
+  </>
+);
