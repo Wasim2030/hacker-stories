@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+// *********************************************************
 const App = () => {
   const stories = [
     {
@@ -18,40 +18,45 @@ const App = () => {
       points: 5,
       objectID: 1,
     },
+    // {
+    //   title: "JavaScript",
+    //   url: "javascript.com",
+    //   author: "Wasim, Athar",
+    //   num_comments: 44,
+    //   points: 5,
+    //   objectID: 3,
+    // },
   ];
 
+  const [searchTerm, setSearchTerm] = useState("");
+
   const handleSearch = (event) => {
-    console.log(event.target.value);
+    setSearchTerm(event.target.value);
   };
+
+  const searchStories = stories.filter((story) => {
+    return story.title.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
   return (
     <div>
-      <h1>Hello World</h1>
+      <h1>Hacker Stories</h1>
       <Search onSearch={handleSearch} />
       <hr />
-      <List list={stories} />
+      {/* <List list={stories} /> */}
+      <List list={searchStories} />
       <hr />
     </div>
   );
 };
-
 export default App;
 
 const Search = (props) => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value);
-    props.onSearch(event);
-  };
-
   return (
     <div>
       <label htmlFor="search">Search: </label>
-      <input type="text" id="search" onChange={handleChange} />
-
-      <p>
-        Searching for: <strong>{searchTerm}</strong>
-      </p>
+      <input type="text" id="search" onChange={props.onSearch} />
+      <p>{/* Searching for: <strong>{props.shows}</strong> */}</p>
     </div>
   );
 };
